@@ -87,10 +87,9 @@ python3 -m http.server 3000
 - Backend API: http://localhost:8080/api/v1/
 - Health Check: http://localhost:8080/api/v1/auth/health
 
-### **Demo Rápido**
-1. Haz clic en "Demo Rápido" para prellenar credenciales
-2. Credenciales: `testuser` / `password123`
-3. ¡Explora todas las funcionalidades!
+### **Credenciales de Prueba**
+- Usuario: `admin@prolink.com`
+- Contraseña: `admin123`
 
 ## 📡 **API Endpoints**
 
@@ -181,9 +180,9 @@ mvn test
 ```
 
 ### **Usuarios de Prueba**
-- Usuario: `testuser`
-- Contraseña: `password123`
-- Email: `testuser@prolink.com`
+- Usuario: `admin@prolink.com`
+- Contraseña: `admin123`
+- Email: `admin@prolink.com`
 
 ## 🚀 **Despliegue a Producción**
 

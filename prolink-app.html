@@ -949,20 +949,7 @@
                                     Registrarse
                                 </button>
                             </div>
-                            <div style="border-top: 1px solid var(--gray-200); padding-top: 20px;">
-                                <p style="font-size: 12px; color: var(--gray-600); margin-bottom: 12px;">
-                                    🧪 <strong>Modo Demo:</strong>
-                                </p>
-                                <button onclick="simpleTest()" style="background: #ffc107; color: #212529; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 8px; cursor: pointer; font-size: 12px;">
-                                    Test Simple
-                                </button>
-                                <button onclick="testConnection()" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 8px; cursor: pointer; font-size: 12px;">
-                                    Probar Conexión
-                                </button>
-                                <button onclick="quickDemo()" style="background: #17a2b8; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 12px;">
-                                    Demo Rápido
-                                </button>
-                            </div>
+
                         </div>
                     </div>
 
@@ -1360,75 +1347,9 @@
         let posts = [];
         let isAuthMode = 'login';
 
-        // =================================
-        // IMMEDIATE DEMO FUNCTIONS (available immediately)
-        // =================================
-        function simpleTest() {
-            alert('¡Los botones funcionan correctamente! 🎉');
-            console.log('Simple test executed successfully');
-        }
 
-        function testConnection() {
-            console.log('TestConnection function called');
-            alert('🔄 Probando conexión...');
-            
-            fetch(`${API_BASE_URL}/posts`)
-                .then(response => {
-                    console.log('Backend response status:', response.status);
-                    if (response.ok) {
-                        alert('✅ Conexión con backend exitosa!');
-                    } else {
-                        alert('⚠️ Backend responde pero necesitas login');
-                    }
-                })
-                .catch(error => {
-                    console.error('Backend connection error:', error);
-                    alert('❌ Error de conexión con backend');
-                });
-        }
 
-        function quickDemo() {
-            console.log('QuickDemo function called');
-            alert('🎯 Abriendo modal de login...');
-            
-            // Check if modal exists
-            const modal = document.getElementById('authModal');
-            if (!modal) {
-                alert('❌ Modal no encontrado');
-                return;
-            }
-            
-            // Open modal and set to login mode
-            modal.classList.add('active');
-            
-            // Show login form
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            if (loginForm && registerForm) {
-                loginForm.classList.remove('d-none');
-                registerForm.classList.add('d-none');
-                
-                // Update modal content
-                const title = document.getElementById('authTitle');
-                const subtitle = document.getElementById('authSubtitle');
-                if (title) title.textContent = 'Iniciar Sesión';
-                if (subtitle) subtitle.textContent = 'Mantente al día en tu mundo profesional';
-            }
-            
-            // Fill form after a short delay
-            setTimeout(() => {
-                const usernameField = document.getElementById('loginUsername');
-                const passwordField = document.getElementById('loginPassword');
-                
-                if (usernameField && passwordField) {
-                    usernameField.value = 'testuser';
-                    passwordField.value = 'password123';
-                    alert('🚀 Demo: Datos prellenados! Haz clic en "Iniciar Sesión"');
-                } else {
-                    alert('⚠️ Campos de login no encontrados');
-                }
-            }, 200);
-        } // 'login' or 'register'
+ // 'login' or 'register'
 
         // =================================
         // UTILITY FUNCTIONS
@@ -2157,70 +2078,7 @@
             }
         }
 
-        // =================================
-        // GLOBAL DEMO FUNCTIONS (accessible from HTML buttons)
-        // =================================
-        
-        // Simple test function
-        function simpleTest() {
-            showToast('¡Los botones funcionan correctamente! 🎉', 'success');
-            console.log('Simple test executed successfully');
-        }
 
-        // Test function to verify everything works
-        function testConnection() {
-            console.log('TestConnection function called'); // Debug log
-            showToast('🔄 Probando conexión...', 'info');
-            
-            fetch(`${API_BASE_URL}/posts`)
-                .then(response => {
-                    console.log('Backend response status:', response.status);
-                    if (response.ok) {
-                        showToast('✅ Conexión con backend exitosa!', 'success');
-                    } else {
-                        showToast('⚠️ Backend responde pero necesitas login', 'error');
-                    }
-                })
-                .catch(error => {
-                    console.error('Backend connection error:', error);
-                    showToast('❌ Error de conexión con backend', 'error');
-                });
-        }
-
-        // Quick demo function
-        function quickDemo() {
-            console.log('QuickDemo function called'); // Debug log
-            showToast('🎯 Abriendo modal de login...', 'info');
-            
-            // First open the login modal
-            showAuth('login');
-            
-            // Wait a moment for modal to render, then fill the form
-            setTimeout(() => {
-                console.log('Attempting to fill form fields'); // Debug log
-                
-                const usernameField = document.getElementById('loginUsername');
-                const passwordField = document.getElementById('loginPassword');
-                
-                console.log('Username field found:', !!usernameField); // Debug log
-                console.log('Password field found:', !!passwordField); // Debug log
-                
-                if (usernameField && passwordField) {
-                    usernameField.value = 'testuser';
-                    passwordField.value = 'password123';
-                    showToast('🚀 Demo: Datos prellenados! Haz clic en "Iniciar Sesión"', 'success');
-                    console.log('Form filled successfully'); // Debug log
-                } else {
-                    showToast('⚠️ Abre el login manualmente', 'error');
-                    console.error('Could not find login fields');
-                }
-            }, 300); // Increased timeout more
-        }
-
-        // Make sure functions are available globally
-        window.testConnection = testConnection;
-        window.quickDemo = quickDemo;
-        window.simpleTest = simpleTest;
 
         // =================================
         // EVENT LISTENERS

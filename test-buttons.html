@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test de Botones</title>
+</head>
+<body>
+    <h1>Test de Funcionalidad</h1>
+    
+    <button onclick="testSimple()">Test Simple</button>
+    <button onclick="testBackend()">Test Backend</button>
+    <button onclick="testDemo()">Test Demo</button>
+
+    <script>
+        function testSimple() {
+            alert('¡Función simple funciona! 🎉');
+            console.log('Test simple OK');
+        }
+
+        function testBackend() {
+            fetch('http://localhost:8080/api/v1/posts')
+                .then(r => r.ok ? alert('✅ Backend OK!') : alert('⚠️ Necesitas login'))
+                .catch(() => alert('❌ Error de conexión'));
+        }
+
+        function testDemo() {
+            alert('🚀 Test demo funcionando!');
+            console.log('Demo test OK');
+        }
+    </script>
+</body>
+</html>

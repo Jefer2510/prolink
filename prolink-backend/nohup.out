@@ -1,0 +1,149 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36mcom.prolink:prolink-backend[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding ProLink Backend 1.0.0[m
+[[1;34mINFO[m]   from pom.xml
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mspring-boot:3.1.5:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mprolink-backend[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mresources:3.3.1:resources[m [1m(default-resources)[m @ [36mprolink-backend[0;1m ---[m
+[[1;34mINFO[m] Copying 2 resources from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 0 resource from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mcompiler:3.8.1:compile[m [1m(default-compile)[m @ [36mprolink-backend[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mresources:3.3.1:testResources[m [1m(default-testResources)[m @ [36mprolink-backend[0;1m ---[m
+[[1;34mINFO[m] skip non existing resourceDirectory /home/chris1/Escritorio/linkedIn/prolink-backend/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mcompiler:3.8.1:testCompile[m [1m(default-testCompile)[m @ [36mprolink-backend[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mspring-boot:3.1.5:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mprolink-backend[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot:3.1.5:run[m [1m(default-cli)[m @ [36mprolink-backend[0;1m ---[m
+[[1;34mINFO[m] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.5)
+
+2025-10-27T19:59:41.696-06:00  INFO 25113 --- [  restartedMain] com.prolink.ProLinkApplication           : Starting ProLinkApplication using Java 21.0.9 with PID 25113 (/home/chris1/Escritorio/linkedIn/prolink-backend/target/classes started by chris1 in /home/chris1/Escritorio/linkedIn/prolink-backend)
+2025-10-27T19:59:41.700-06:00 DEBUG 25113 --- [  restartedMain] com.prolink.ProLinkApplication           : Running with Spring Boot v3.1.5, Spring v6.0.13
+2025-10-27T19:59:41.702-06:00  INFO 25113 --- [  restartedMain] com.prolink.ProLinkApplication           : The following 1 profile is active: "oracle-local"
+2025-10-27T19:59:41.944-06:00  INFO 25113 --- [  restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in /home/chris1/.m2/repository/com/oracle/database/jdbc/ojdbc8/21.9.0.0/ojdbc8-21.9.0.0.jar referenced one or more files that do not exist: file:/home/chris1/.m2/repository/com/oracle/database/jdbc/ojdbc8/21.9.0.0/oraclepki.jar
+2025-10-27T19:59:41.945-06:00  INFO 25113 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-27T19:59:41.945-06:00  INFO 25113 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-27T19:59:43.926-06:00  INFO 25113 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-27T19:59:44.092-06:00  INFO 25113 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 151 ms. Found 4 JPA repository interfaces.
+2025-10-27T19:59:45.373-06:00  INFO 25113 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-27T19:59:45.392-06:00  INFO 25113 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-27T19:59:45.393-06:00  INFO 25113 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-27T19:59:45.493-06:00  INFO 25113 --- [  restartedMain] o.a.c.c.C.[.[localhost].[/api/v1]        : Initializing Spring embedded WebApplicationContext
+2025-10-27T19:59:45.495-06:00  INFO 25113 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3544 ms
+2025-10-27T19:59:45.963-06:00  INFO 25113 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-27T19:59:46.048-06:00  INFO 25113 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-27T19:59:46.052-06:00  INFO 25113 --- [  restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-27T19:59:46.472-06:00  INFO 25113 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-27T19:59:46.511-06:00  INFO 25113 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-27T19:59:47.050-06:00  INFO 25113 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@21c539d7
+2025-10-27T19:59:47.054-06:00  INFO 25113 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-27T19:59:47.275-06:00  WARN 25113 --- [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-27T19:59:50.191-06:00  INFO 25113 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-27T19:59:50.198-06:00  INFO 25113 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T19:59:50.818-06:00  INFO 25113 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-27T19:59:52.338-06:00 DEBUG 25113 --- [  restartedMain] c.p.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2025-10-27T19:59:53.888-06:00  WARN 25113 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-27T19:59:55.091-06:00  INFO 25113 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4211e80a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2743c4b5, org.springframework.security.web.context.SecurityContextHolderFilter@106ffee8, org.springframework.security.web.header.HeaderWriterFilter@4eaa7df6, org.springframework.web.filter.CorsFilter@272f9bab, org.springframework.security.web.authentication.logout.LogoutFilter@1d23c2fc, com.prolink.security.JwtAuthenticationFilter@146df660, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3646b551, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@b74a556, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f432ef7, org.springframework.security.web.session.SessionManagementFilter@1b0bb79b, org.springframework.security.web.access.ExceptionTranslationFilter@361c9eb6, org.springframework.security.web.access.intercept.AuthorizationFilter@2ace36e]
+2025-10-27T19:59:56.081-06:00  WARN 25113 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-10-27T19:59:56.132-06:00  WARN 25113 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-10-27T19:59:56.138-06:00  INFO 25113 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-27T19:59:56.154-06:00  INFO 25113 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-27T19:59:56.257-06:00  INFO 25113 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-27T19:59:56.267-06:00  INFO 25113 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-10-27T19:59:56.278-06:00  WARN 25113 --- [  restartedMain] o.a.c.loader.WebappClassLoaderBase       : The web application [api#v1] appears to have started a thread named [oracle.jdbc.driver.BlockSource.ThreadedCachingBlockSource.BlockReleaser] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1797)
+ oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:258)
+ oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:240)
+ oracle.jdbc.driver.BlockSource$ThreadedCachingBlockSource$BlockReleaser.run(BlockSource.java:345)
+2025-10-27T19:59:56.279-06:00  WARN 25113 --- [  restartedMain] o.a.c.loader.WebappClassLoaderBase       : The web application [api#v1] appears to have started a thread named [InterruptTimer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/java.lang.Object.wait0(Native Method)
+ java.base/java.lang.Object.wait(Object.java:366)
+ java.base/java.util.TimerThread.mainLoop(Timer.java:563)
+ java.base/java.util.TimerThread.run(Timer.java:516)
+2025-10-27T19:59:56.280-06:00  WARN 25113 --- [  restartedMain] o.a.c.loader.WebappClassLoaderBase       : The web application [api#v1] appears to have started a thread named [OJDBC-WORKER-THREAD-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:410)
+ java.base/java.util.concurrent.LinkedTransferQueue$DualNode.await(LinkedTransferQueue.java:452)
+ java.base/java.util.concurrent.SynchronousQueue$Transferer.xferLifo(SynchronousQueue.java:194)
+ java.base/java.util.concurrent.SynchronousQueue.xfer(SynchronousQueue.java:235)
+ java.base/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:338)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1069)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-10-27T19:59:56.313-06:00  INFO 25113 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-10-27T19:59:56.382-06:00 ERROR 25113 --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:357) ~[spring-context-6.0.13.jar:6.0.13]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:156) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:124) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:966) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.5.jar:3.1.5]
+	at com.prolink.ProLinkApplication.main(ProLinkApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.5.jar:3.1.5]
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:229) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:44) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:179) ~[spring-context-6.0.13.jar:6.0.13]
+	... 16 common frames omitted
+Caused by: java.lang.IllegalArgumentException: standardService.connector.startFailed
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:235) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:282) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:213) ~[spring-boot-3.1.5.jar:3.1.5]
+	... 18 common frames omitted
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1046) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:232) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	... 20 common frames omitted
+Caused by: java.net.BindException: La dirección ya se está usando
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.bind(Net.java:565) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301) ~[na:na]
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:247) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:202) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1280) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1366) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:635) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1043) ~[tomcat-embed-core-10.1.15.jar:10.1.15]
+	... 22 common frames omitted
+
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  21.588 s
+[[1;34mINFO[m] Finished at: 2025-10-27T19:59:56-06:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m

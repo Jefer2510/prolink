@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProLink - Red Profesional</title>
+    <meta name="description" content="ProLink - La red social profesional para conectar talento">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0a66c2;
+            --primary-dark: #004182;
+            --primary-light: #e7f3ff;
+            --gray-100: #f3f2ef;
+            --gray-200: #e9e5df;
+            --gray-300: #a8a8a8;
+            --gray-600: #666666;
+            --gray-900: #000000;
+            --white: #ffffff;
+            --success: #057642;
+            --warning: #f5c75d;
+            --danger: #cc1016;
+            --border-radius: 8px;
+            --box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+            --box-shadow-hover: 0 0 0 1px rgba(0,0,0,.15), 0 4px 6px rgba(0,0,0,.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        /* =================================
+           NAVIGATION & HEADER
+        ================================= */
+        .navbar-prolink {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            padding: 0;
+            min-height: 52px;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--primary-blue) !important;
+            text-decoration: none;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 280px;
+        }
+
+        .search-input {
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            padding: 8px 8px 8px 40px;
+            font-size: 14px;
+            width: 100%;
+            background-color: var(--gray-100);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-600);
+        }
+
+        .nav-item-prolink {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: var(--gray-600);
+            transition: color 0.2s;
+            border-radius: 4px;
+            min-width: 80px;
+        }
+
+        .nav-item-prolink:hover {
+            color: var(--gray-900);
+            background-color: var(--gray-100);
+        }
+
+        .nav-item-prolink.active {
+            color: var(--gray-900);
+        }
+
+        .nav-item-prolink i {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        .nav-item-prolink span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background-color: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* =================================
+           MAIN LAYOUT
+        ================================= */
+        .main-container {
+            max-width: 1128px;
+            margin: 0 auto;
+            padding: 20px 12px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 225px 1fr 300px;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left,
+            .sidebar-right {
+                display: none;
+            }
+        }
+
+        /* =================================
+           CARDS & COMPONENTS
+        ================================= */
+        .card-prolink {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .card-header-prolink {
+            padding: 16px 16px 0;
+            border-bottom: none;
+        }
+
+        .card-body-prolink {
+            padding: 16px;
+        }
+
+        .card-footer-prolink {
+            padding: 0 16px 16px;
+            background: transparent;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        /* =================================
+           PROFILE SIDEBAR
+        ================================= */
+        .profile-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-cover {
+            height: 54px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .profile-avatar {
+            width: 72px;
+            height: 72px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            margin: -36px auto 12px;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--gray-600);
+        }
+
+        .profile-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--gray-900);
+        }
+
+        .profile-title {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+
+        .profile-stats {
+            border-top: 1px solid var(--gray-200);
+            padding-top: 12px;
+            font-size: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: var(--gray-600);
+        }
+
+        .stat-number {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* =================================
+           POST CREATION
+        ================================= */
+        .post-composer {
+            padding: 16px;
+        }
+
+        .composer-input {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .composer-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 18px;
+        }
+
+        .composer-textarea {
+            flex: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 16px;
+            line-height: 1.4;
+            min-height: 48px;
+            background: transparent;
+        }
+
+        .composer-textarea::placeholder {
+            color: var(--gray-600);
+        }
+
+        .composer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 12px;
+        }
+
+        .media-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .media-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .media-btn:hover {
+            background-color: var(--gray-100);
+        }
+
+        .btn-post {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-post:hover:not(:disabled) {
+            background: var(--primary-dark);
+        }
+
+        .btn-post:disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+        }
+
+        /* =================================
+           POSTS FEED
+        ================================= */
+        .post-card {
+            margin-bottom: 16px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .post-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 18px;
+        }
+
+        .post-author {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--gray-900);
+            margin-bottom: 2px;
+        }
+
+        .author-title {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 2px;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .post-menu {
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .post-menu:hover {
+            background: var(--gray-100);
+        }
+
+        .post-content {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            color: var(--gray-900);
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 8px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--gray-100);
+        }
+
+        .action-btn.liked {
+            color: var(--primary-blue);
+        }
+
+        /* =================================
+           RIGHT SIDEBAR
+        ================================= */
+        .suggestions-card h6 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--gray-900);
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+
+        .suggestion-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        .suggestion-info {
+            flex: 1;
+        }
+
+        .suggestion-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--gray-900);
+            margin-bottom: 2px;
+        }
+
+        .suggestion-title {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .btn-connect {
+            background: none;
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-connect:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* =================================
+           AUTHENTICATION MODAL
+        ================================= */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1050;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-modal.active {
+            display: flex;
+        }
+
+        .auth-content {
+            background: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 400px;
+            padding: 32px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .auth-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .auth-subtitle {
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--gray-900);
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.2);
+        }
+
+        .form-input.error {
+            border-color: var(--danger);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--primary-dark);
+        }
+
+        .btn-primary:disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+        }
+
+        .auth-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =================================
+           LOADING & STATES
+        ================================= */
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--gray-300);
+            border-radius: 50%;
+            border-top-color: var(--primary-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1060;
+        }
+
+        .toast {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-hover);
+            padding: 16px;
+            margin-bottom: 12px;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        /* =================================
+           NETWORK VIEW
+        ================================= */
+        .network-section {
+            margin-bottom: 24px;
+        }
+
+        .connection-request {
+            border-radius: var(--border-radius);
+        }
+
+        .connection-request:hover {
+            background: var(--gray-100);
+        }
+
+        /* =================================
+           MESSAGES VIEW
+        ================================= */
+        .conversation-item {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .conversation-item:hover {
+            background: var(--gray-100);
+        }
+
+        .conversation-item.active {
+            background: var(--primary-light);
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .message-thread {
+            padding: 16px 0;
+        }
+
+        .message {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message.sent {
+            align-items: flex-end;
+        }
+
+        .message.received {
+            align-items: flex-start;
+        }
+
+        .message-content {
+            background: var(--gray-100);
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+
+        .message.sent .message-content {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* =================================
+           NOTIFICATIONS VIEW
+        ================================= */
+        .notification-item {
+            transition: background-color 0.2s;
+        }
+
+        .notification-item:hover {
+            background: var(--gray-100);
+        }
+
+        .notification-item.unread {
+            background: var(--primary-light);
+        }
+
+        .notification-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            margin-top: 6px;
+        }
+
+        /* =================================
+           PROFILE VIEW
+        ================================= */
+        .profile-section {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .profile-section:last-child {
+            border-bottom: none;
+        }
+
+        .profile-section h6 {
+            color: var(--gray-900);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .profile-section i {
+            color: var(--primary-blue);
+            margin-right: 8px;
+        }
+
+        /* =================================
+           UTILITIES
+        ================================= */
+        .d-none { display: none !important; }
+        .d-block { display: block !important; }
+        .d-flex { display: flex !important; }
+        .align-items-center { align-items: center !important; }
+        .align-items-start { align-items: flex-start !important; }
+        .justify-content-between { justify-content: space-between !important; }
+        .text-center { text-align: center !important; }
+        .mb-0 { margin-bottom: 0 !important; }
+        .mb-1 { margin-bottom: 4px !important; }
+        .mb-3 { margin-bottom: 16px !important; }
+        .mb-4 { margin-bottom: 24px !important; }
+        .mt-3 { margin-top: 16px !important; }
+        .me-2 { margin-right: 8px !important; }
+        .me-3 { margin-right: 16px !important; }
+        .ms-3 { margin-left: 16px !important; }
+        .flex-grow-1 { flex-grow: 1 !important; }
+        .cursor-pointer { cursor: pointer; }
+        .border-bottom { border-bottom: 1px solid var(--gray-200) !important; }
+
+        /* =================================
+           RESPONSIVE
+        ================================= */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 12px 8px;
+            }
+            
+            .navbar-prolink .container-fluid {
+                padding: 0 12px;
+            }
+            
+            .search-container {
+                max-width: 200px;
+            }
+            
+            .nav-item-prolink span {
+                display: none;
+            }
+            
+            .nav-item-prolink {
+                min-width: 48px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-prolink fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#" onclick="showFeed()">
+                <i class="fab fa-linkedin"></i> ProLink
+            </a>
+
+            <!-- Search -->
+            <div class="search-container mx-3">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Buscar" id="searchInput">
+            </div>
+
+            <!-- Navigation Items -->
+            <div class="d-flex align-items-center gap-1">
+                <a href="#" class="nav-item-prolink active" onclick="showFeed()" id="nav-home">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="#" class="nav-item-prolink" onclick="showNetwork()" id="nav-network">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Red</span>
+                </a>
+                <a href="#" class="nav-item-prolink" onclick="showMessages()" id="nav-messages">
+                    <div class="position-relative">
+                        <i class="fas fa-comment-dots"></i>
+                        <span class="notification-badge d-none" id="messagesBadge">1</span>
+                    </div>
+                    <span>Mensajes</span>
+                </a>
+                <a href="#" class="nav-item-prolink" onclick="showNotifications()" id="nav-notifications">
+                    <div class="position-relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge d-none" id="notificationsBadge">3</span>
+                    </div>
+                    <span>Notificaciones</span>
+                </a>
+                
+                <!-- User Menu -->
+                <div class="nav-item-prolink" onclick="showProfile()" id="nav-profile">
+                    <div class="profile-avatar" style="width: 24px; height: 24px; font-size: 12px;" id="navAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>Yo</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container" style="margin-top: 72px;">
+        <div class="content-grid">
+            <!-- Left Sidebar -->
+            <aside class="sidebar-left">
+                <!-- Profile Card -->
+                <div class="card-prolink profile-card">
+                    <div class="profile-cover"></div>
+                    <div class="card-body-prolink">
+                        <div class="profile-avatar" id="profileAvatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-name" id="profileName">Usuario Invitado</div>
+                        <div class="profile-title" id="profileTitle">Conecta para ver más</div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span>Conexiones</span>
+                                <span class="stat-number" id="connectionsCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Visualizaciones del perfil</span>
+                                <span class="stat-number">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="card-prolink">
+                    <div class="card-body-prolink">
+                        <div style="font-size: 12px; color: var(--gray-600);">
+                            <div style="margin-bottom: 8px;">
+                                <a href="#" style="text-decoration: none; color: var(--gray-600);">
+                                    <i class="fas fa-bookmark"></i> Elementos guardados
+                                </a>
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <a href="#" style="text-decoration: none; color: var(--gray-600);">
+                                    <i class="fas fa-users"></i> Grupos
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#" style="text-decoration: none; color: var(--gray-600);">
+                                    <i class="fas fa-calendar"></i> Eventos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Feed -->
+            <main class="feed-main">
+                <!-- Feed View (Default) -->
+                <div id="feedView">
+                    <!-- Auth Required Message (shown when not logged in) -->
+                    <div class="card-prolink" id="authRequired">
+                        <div class="card-body-prolink text-center" style="padding: 40px;">
+                            <i class="fab fa-linkedin" style="font-size: 48px; color: var(--primary-blue); margin-bottom: 20px;"></i>
+                            <h3 style="margin-bottom: 16px;">Bienvenido a ProLink</h3>
+                            <p style="color: var(--gray-600); margin-bottom: 24px;">
+                                Conecta con profesionales, comparte ideas y haz crecer tu red.
+                            </p>
+                            <div style="margin-bottom: 20px;">
+                                <button class="btn-primary" onclick="showAuth('login')" style="margin-right: 12px;">
+                                    Iniciar Sesión
+                                </button>
+                                <button class="btn-primary" onclick="showAuth('register')" style="background: white; color: var(--primary-blue); border: 1px solid var(--primary-blue);">
+                                    Registrarse
+                                </button>
+                            </div>
+                            <div style="border-top: 1px solid var(--gray-200); padding-top: 20px;">
+                                <p style="font-size: 12px; color: var(--gray-600); margin-bottom: 12px;">
+                                    🧪 <strong>Modo Demo:</strong>
+                                </p>
+                                <button onclick="simpleTest()" style="background: #ffc107; color: #212529; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 8px; cursor: pointer; font-size: 12px;">
+                                    Test Simple
+                                </button>
+                                <button onclick="testConnection()" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 8px; cursor: pointer; font-size: 12px;">
+                                    Probar Conexión
+                                </button>
+                                <button onclick="quickDemo()" style="background: #17a2b8; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                                    Demo Rápido
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post Composer (shown when logged in) -->
+                    <div class="card-prolink post-composer d-none" id="postComposer">
+                        <div class="composer-input">
+                            <div class="composer-avatar" id="composerAvatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <textarea class="composer-textarea" placeholder="¿En qué estás pensando?" id="postContent"></textarea>
+                        </div>
+                        <div class="composer-actions">
+                            <div class="media-buttons">
+                                <button class="media-btn" onclick="selectMedia('image')">
+                                    <i class="fas fa-image" style="color: #70b5f9;"></i>
+                                    <span>Foto</span>
+                                </button>
+                                <button class="media-btn" onclick="selectMedia('video')">
+                                    <i class="fas fa-video" style="color: #7fc15e;"></i>
+                                    <span>Video</span>
+                                </button>
+                                <button class="media-btn" onclick="selectMedia('document')">
+                                    <i class="fas fa-file-alt" style="color: #e7a33e;"></i>
+                                    <span>Documento</span>
+                                </button>
+                            </div>
+                            <button class="btn-post" id="publishBtn" onclick="publishPost()" disabled>
+                                Publicar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div id="postsContainer">
+                        <!-- Posts will be dynamically loaded here -->
+                    </div>
+
+                    <!-- Loading Indicator -->
+                    <div class="text-center d-none" id="loadingPosts">
+                        <div class="loading"></div>
+                        <p style="margin-top: 12px; color: var(--gray-600);">Cargando publicaciones...</p>
+                    </div>
+                </div>
+
+                <!-- Network View -->
+                <div id="networkView" class="d-none">
+                    <div class="card-prolink">
+                        <div class="card-header-prolink">
+                            <h4><i class="fas fa-user-friends"></i> Mi Red</h4>
+                        </div>
+                        <div class="card-body-prolink">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="network-section">
+                                        <h6><i class="fas fa-users"></i> Conexiones (12)</h6>
+                                        <div id="connectionsContainer">
+                                            <!-- Connections will be loaded here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="network-section">
+                                        <h6><i class="fas fa-user-plus"></i> Solicitudes pendientes</h6>
+                                        <div id="pendingRequestsContainer">
+                                            <div class="connection-request">
+                                                <div class="d-flex align-items-center gap-3 p-3 border-bottom">
+                                                    <div class="suggestion-avatar">AM</div>
+                                                    <div class="flex-grow-1">
+                                                        <div class="suggestion-name">Ana Martínez</div>
+                                                        <div class="suggestion-title">UX Designer en Tech Corp</div>
+                                                        <small class="text-muted">Hace 2 días</small>
+                                                    </div>
+                                                    <div>
+                                                        <button class="btn btn-sm btn-outline-success me-2">Aceptar</button>
+                                                        <button class="btn btn-sm btn-outline-secondary">Ignorar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-prolink">
+                        <div class="card-header-prolink">
+                            <h6><i class="fas fa-search"></i> Encuentra personas que conoces</h6>
+                        </div>
+                        <div class="card-body-prolink">
+                            <div class="search-container mb-3">
+                                <input type="text" class="form-control" placeholder="Buscar por nombre, empresa o universidad...">
+                            </div>
+                            <div id="networkSuggestionsContainer">
+                                <!-- Network suggestions will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages View -->
+                <div id="messagesView" class="d-none">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-prolink">
+                                <div class="card-header-prolink">
+                                    <h6><i class="fas fa-comment-dots"></i> Mensajes</h6>
+                                </div>
+                                <div class="card-body-prolink" style="padding: 0;">
+                                    <div id="conversationsList">
+                                        <div class="conversation-item active" onclick="selectConversation(1)">
+                                            <div class="d-flex align-items-center p-3 border-bottom">
+                                                <div class="suggestion-avatar">JD</div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <div class="suggestion-name">Juan Pérez</div>
+                                                    <div class="text-muted small">¿Cómo va el proyecto?</div>
+                                                    <small class="text-muted">Hace 5 min</small>
+                                                </div>
+                                                <div class="notification-badge">2</div>
+                                            </div>
+                                        </div>
+                                        <div class="conversation-item" onclick="selectConversation(2)">
+                                            <div class="d-flex align-items-center p-3 border-bottom">
+                                                <div class="suggestion-avatar">MG</div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <div class="suggestion-name">María García</div>
+                                                    <div class="text-muted small">Perfecto, hablamos mañana</div>
+                                                    <small class="text-muted">Ayer</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-prolink" id="chatContainer">
+                                <div class="card-header-prolink">
+                                    <div class="d-flex align-items-center">
+                                        <div class="suggestion-avatar me-3">JD</div>
+                                        <div>
+                                            <h6 class="mb-0">Juan Pérez</h6>
+                                            <small class="text-success"><i class="fas fa-circle" style="font-size: 8px;"></i> En línea</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body-prolink" id="messagesContainer" style="height: 400px; overflow-y: auto;">
+                                    <div class="message-thread">
+                                        <div class="message received">
+                                            <div class="message-content">
+                                                ¡Hola! ¿Cómo estás?
+                                            </div>
+                                            <small class="text-muted">10:30 AM</small>
+                                        </div>
+                                        <div class="message sent">
+                                            <div class="message-content">
+                                                ¡Todo bien! ¿Y tú qué tal?
+                                            </div>
+                                            <small class="text-muted">10:32 AM</small>
+                                        </div>
+                                        <div class="message received">
+                                            <div class="message-content">
+                                                ¿Cómo va el proyecto que me comentaste?
+                                            </div>
+                                            <small class="text-muted">10:35 AM</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-prolink">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Escribe un mensaje..." id="messageInput" onkeypress="if(event.key==='Enter') sendMessage()">
+                                        <button class="btn btn-primary" onclick="sendMessage()">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications View -->
+                <div id="notificationsView" class="d-none">
+                    <div class="card-prolink">
+                        <div class="card-header-prolink">
+                            <h4><i class="fas fa-bell"></i> Notificaciones</h4>
+                        </div>
+                        <div class="card-body-prolink">
+                            <div id="notificationsContainer">
+                                <div class="notification-item unread">
+                                    <div class="d-flex align-items-start p-3 border-bottom">
+                                        <div class="suggestion-avatar me-3">LP</div>
+                                        <div class="flex-grow-1">
+                                            <p class="mb-1"><strong>Luis Rodríguez</strong> le gustó tu publicación</p>
+                                            <small class="text-muted">Hace 2 horas</small>
+                                        </div>
+                                        <div class="notification-dot"></div>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="d-flex align-items-start p-3 border-bottom">
+                                        <div class="suggestion-avatar me-3">CM</div>
+                                        <div class="flex-grow-1">
+                                            <p class="mb-1"><strong>Carmen Morales</strong> comentó tu publicación</p>
+                                            <small class="text-muted">Ayer</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="d-flex align-items-start p-3 border-bottom">
+                                        <div class="suggestion-avatar me-3">RH</div>
+                                        <div class="flex-grow-1">
+                                            <p class="mb-1"><strong>Roberto Herrera</strong> quiere conectar contigo</p>
+                                            <small class="text-muted">Hace 2 días</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile View -->
+                <div id="profileView" class="d-none">
+                    <div class="card-prolink">
+                        <div class="profile-cover" style="height: 120px;"></div>
+                        <div class="card-body-prolink">
+                            <div style="margin-top: -60px;">
+                                <div class="profile-avatar" style="width: 120px; height: 120px; font-size: 48px; margin: 0 auto 20px;" id="bigProfileAvatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="text-center mb-4">
+                                    <h3 id="profileDisplayName">Usuario</h3>
+                                    <p class="text-muted" id="profileBio">Agrega una descripción a tu perfil</p>
+                                    <button class="btn btn-outline-primary btn-sm" onclick="editProfile()">
+                                        <i class="fas fa-edit"></i> Editar perfil
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="profile-section">
+                                        <h6><i class="fas fa-info-circle"></i> Acerca de</h6>
+                                        <p class="text-muted" id="profileAbout">
+                                            Comparte información sobre ti para que otros puedan conocerte mejor.
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="profile-section">
+                                        <h6><i class="fas fa-briefcase"></i> Experiencia</h6>
+                                        <div id="experienceContainer">
+                                            <p class="text-muted">Agrega tu experiencia laboral</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="profile-section">
+                                        <h6><i class="fas fa-graduation-cap"></i> Educación</h6>
+                                        <div id="educationContainer">
+                                            <p class="text-muted">Agrega tu formación académica</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="profile-section">
+                                        <h6><i class="fas fa-chart-line"></i> Estadísticas del perfil</h6>
+                                        <div class="stat-item">
+                                            <span>Visualizaciones del perfil</span>
+                                            <span class="stat-number">127</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span>Impresiones de publicaciones</span>
+                                            <span class="stat-number">1,543</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar-right">
+                <!-- People Suggestions -->
+                <div class="card-prolink suggestions-card">
+                    <div class="card-body-prolink">
+                        <h6>Personas que podrías conocer</h6>
+                        <div id="suggestionsContainer">
+                            <!-- Suggestions will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Learning (placeholder) -->
+                <div class="card-prolink">
+                    <div class="card-body-prolink">
+                        <h6 style="font-size: 14px; margin-bottom: 12px;">
+                            <i class="fas fa-graduation-cap" style="color: var(--primary-blue);"></i>
+                            ProLink Learning
+                        </h6>
+                        <p style="font-size: 12px; color: var(--gray-600);">
+                            Mejora tus habilidades con cursos recomendados.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Authentication Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h2 class="auth-title" id="authTitle">Iniciar Sesión</h2>
+                <p class="auth-subtitle" id="authSubtitle">Mantente al día en tu mundo profesional</p>
+            </div>
+
+            <form id="authForm">
+                <!-- Login Form -->
+                <div id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email o nombre de usuario</label>
+                        <input type="text" class="form-input" id="loginUsername" required>
+                        <div class="error-message" id="loginUsernameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-input" id="loginPassword" required>
+                        <div class="error-message" id="loginPasswordError"></div>
+                    </div>
+                    <button type="submit" class="btn-primary" id="loginBtn">
+                        Iniciar Sesión
+                    </button>
+                </div>
+
+                <!-- Register Form -->
+                <div id="registerForm" class="d-none">
+                    <div class="form-group">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-input" id="registerFirstName" required>
+                        <div class="error-message" id="registerFirstNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Apellido</label>
+                        <input type="text" class="form-input" id="registerLastName" required>
+                        <div class="error-message" id="registerLastNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" id="registerEmail" required>
+                        <div class="error-message" id="registerEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-input" id="registerUsername" required>
+                        <div class="error-message" id="registerUsernameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-input" id="registerPassword" required>
+                        <div class="error-message" id="registerPasswordError"></div>
+                    </div>
+                    <button type="submit" class="btn-primary" id="registerBtn">
+                        Registrarse
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-switch">
+                <span id="authSwitchText">¿Nuevo en ProLink?</span>
+                <a href="#" class="auth-link" id="authSwitchLink" onclick="toggleAuthMode()">Únete ahora</a>
+            </div>
+
+            <button style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--gray-600); cursor: pointer;" onclick="hideAuth()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // =================================
+        // GLOBAL VARIABLES & CONFIG
+        // =================================
+        const API_BASE_URL = 'http://localhost:8080/api/v1';
+        let currentUser = null;
+        let authToken = null;
+        let posts = [];
+        let isAuthMode = 'login';
+
+        // =================================
+        // IMMEDIATE DEMO FUNCTIONS (available immediately)
+        // =================================
+        function simpleTest() {
+            alert('¡Los botones funcionan correctamente! 🎉');
+            console.log('Simple test executed successfully');
+        }
+
+        function testConnection() {
+            console.log('TestConnection function called');
+            alert('🔄 Probando conexión...');
+            
+            fetch(`${API_BASE_URL}/posts`)
+                .then(response => {
+                    console.log('Backend response status:', response.status);
+                    if (response.ok) {
+                        alert('✅ Conexión con backend exitosa!');
+                    } else {
+                        alert('⚠️ Backend responde pero necesitas login');
+                    }
+                })
+                .catch(error => {
+                    console.error('Backend connection error:', error);
+                    alert('❌ Error de conexión con backend');
+                });
+        }
+
+        function quickDemo() {
+            console.log('QuickDemo function called');
+            alert('🎯 Abriendo modal de login...');
+            
+            // Check if modal exists
+            const modal = document.getElementById('authModal');
+            if (!modal) {
+                alert('❌ Modal no encontrado');
+                return;
+            }
+            
+            // Open modal and set to login mode
+            modal.classList.add('active');
+            
+            // Show login form
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            if (loginForm && registerForm) {
+                loginForm.classList.remove('d-none');
+                registerForm.classList.add('d-none');
+                
+                // Update modal content
+                const title = document.getElementById('authTitle');
+                const subtitle = document.getElementById('authSubtitle');
+                if (title) title.textContent = 'Iniciar Sesión';
+                if (subtitle) subtitle.textContent = 'Mantente al día en tu mundo profesional';
+            }
+            
+            // Fill form after a short delay
+            setTimeout(() => {
+                const usernameField = document.getElementById('loginUsername');
+                const passwordField = document.getElementById('loginPassword');
+                
+                if (usernameField && passwordField) {
+                    usernameField.value = 'testuser';
+                    passwordField.value = 'password123';
+                    alert('🚀 Demo: Datos prellenados! Haz clic en "Iniciar Sesión"');
+                } else {
+                    alert('⚠️ Campos de login no encontrados');
+                }
+            }, 200);
+        } // 'login' or 'register'
+
+        // =================================
+        // UTILITY FUNCTIONS
+        // =================================
+        function showToast(message, type = 'success') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            let icon, color;
+            switch(type) {
+                case 'success':
+                    icon = 'fas fa-check-circle';
+                    color = 'var(--success)';
+                    break;
+                case 'error':
+                    icon = 'fas fa-exclamation-circle';
+                    color = 'var(--danger)';
+                    break;
+                case 'info':
+                    icon = 'fas fa-info-circle';
+                    color = 'var(--primary-blue)';
+                    break;
+                default:
+                    icon = 'fas fa-bell';
+                    color = 'var(--gray-600)';
+            }
+            
+            toast.innerHTML = `
+                <i class="${icon}" style="color: ${color}"></i>
+                <span>${message}</span>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.remove();
+                }
+            }, 4000);
+        }
+
+        function formatTimeAgo(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffInHours = Math.floor((now - date) / (1000 * 60 * 60));
+            
+            if (diffInHours < 1) return 'Hace menos de 1h';
+            if (diffInHours < 24) return `Hace ${diffInHours}h`;
+            
+            const diffInDays = Math.floor(diffInHours / 24);
+            if (diffInDays < 7) return `Hace ${diffInDays}d`;
+            
+            return date.toLocaleDateString();
+        }
+
+        function getInitials(firstName, lastName) {
+            return `${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}`.toUpperCase();
+        }
+
+        function clearFormErrors() {
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('.form-input').forEach(el => el.classList.remove('error'));
+        }
+
+        function showFormError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorEl = document.getElementById(fieldId + 'Error');
+            if (field) field.classList.add('error');
+            if (errorEl) errorEl.textContent = message;
+        }
+
+        // =================================
+        // AUTHENTICATION
+        // =================================
+        function showAuth(mode = 'login') {
+            isAuthMode = mode;
+            const modal = document.getElementById('authModal');
+            const title = document.getElementById('authTitle');
+            const subtitle = document.getElementById('authSubtitle');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const switchText = document.getElementById('authSwitchText');
+            const switchLink = document.getElementById('authSwitchLink');
+            
+            if (mode === 'login') {
+                title.textContent = 'Iniciar Sesión';
+                subtitle.textContent = 'Mantente al día en tu mundo profesional';
+                loginForm.classList.remove('d-none');
+                registerForm.classList.add('d-none');
+                switchText.textContent = '¿Nuevo en ProLink?';
+                switchLink.textContent = 'Únete ahora';
+            } else {
+                title.textContent = 'Únete a ProLink';
+                subtitle.textContent = 'Conecta con profesionales de todo el mundo';
+                loginForm.classList.add('d-none');
+                registerForm.classList.remove('d-none');
+                switchText.textContent = '¿Ya tienes cuenta?';
+                switchLink.textContent = 'Inicia sesión';
+            }
+            
+            clearFormErrors();
+            modal.classList.add('active');
+        }
+
+        function hideAuth() {
+            document.getElementById('authModal').classList.remove('active');
+            clearFormErrors();
+        }
+
+        function toggleAuthMode() {
+            showAuth(isAuthMode === 'login' ? 'register' : 'login');
+        }
+
+        async function login(usernameOrEmail, password) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ usernameOrEmail, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.token) {
+                    authToken = data.token;
+                    currentUser = {
+                        id: data.id,
+                        username: data.username,
+                        email: data.email,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        role: data.role
+                    };
+                    
+                    localStorage.setItem('authToken', authToken);
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    
+                    hideAuth();
+                    showAuthenticatedUI();
+                    showToast('¡Bienvenido de vuelta!');
+                    
+                    await loadPosts();
+                    return true;
+                } else {
+                    throw new Error(data.message || 'Error en el login');
+                }
+            } catch (error) {
+                showToast(error.message, 'error');
+                return false;
+            }
+        }
+
+        async function register(userData) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showToast('¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.');
+                    showAuth('login');
+                    return true;
+                } else {
+                    throw new Error(data.message || 'Error en el registro');
+                }
+            } catch (error) {
+                showToast(error.message, 'error');
+                return false;
+            }
+        }
+
+        function logout() {
+            authToken = null;
+            currentUser = null;
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('currentUser');
+            
+            showGuestUI();
+            showToast('Sesión cerrada correctamente');
+        }
+
+        function showAuthenticatedUI() {
+            document.getElementById('authRequired').classList.add('d-none');
+            document.getElementById('postComposer').classList.remove('d-none');
+            
+            // Update profile info
+            const profileName = document.getElementById('profileName');
+            const profileAvatar = document.getElementById('profileAvatar');
+            const composerAvatar = document.getElementById('composerAvatar');
+            const navAvatar = document.getElementById('navAvatar');
+            
+            if (currentUser) {
+                const initials = getInitials(currentUser.firstName, currentUser.lastName);
+                const fullName = `${currentUser.firstName} ${currentUser.lastName}`;
+                
+                profileName.textContent = fullName;
+                profileAvatar.textContent = initials;
+                composerAvatar.textContent = initials;
+                navAvatar.textContent = initials;
+                
+                document.getElementById('profileTitle').textContent = 'Profesional en ProLink';
+            }
+        }
+
+        function showGuestUI() {
+            document.getElementById('authRequired').classList.remove('d-none');
+            document.getElementById('postComposer').classList.add('d-none');
+            document.getElementById('postsContainer').innerHTML = '';
+            
+            // Reset profile to guest state
+            document.getElementById('profileName').textContent = 'Usuario Invitado';
+            document.getElementById('profileTitle').textContent = 'Conecta para ver más';
+            document.getElementById('profileAvatar').innerHTML = '<i class="fas fa-user"></i>';
+            document.getElementById('composerAvatar').innerHTML = '<i class="fas fa-user"></i>';
+            document.getElementById('navAvatar').innerHTML = '<i class="fas fa-user"></i>';
+        }
+
+        // =================================
+        // POSTS MANAGEMENT
+        // =================================
+        async function loadPosts() {
+            if (!authToken) return;
+            
+            const loadingEl = document.getElementById('loadingPosts');
+            const postsContainer = document.getElementById('postsContainer');
+            
+            loadingEl.classList.remove('d-none');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/posts`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    posts = await response.json();
+                    renderPosts();
+                } else {
+                    throw new Error('Error al cargar posts');
+                }
+            } catch (error) {
+                showToast('Error al cargar las publicaciones', 'error');
+            } finally {
+                loadingEl.classList.add('d-none');
+            }
+        }
+
+        function renderPosts() {
+            const container = document.getElementById('postsContainer');
+            
+            if (!posts || posts.length === 0) {
+                container.innerHTML = `
+                    <div class="card-prolink">
+                        <div class="card-body-prolink text-center" style="padding: 40px;">
+                            <i class="fas fa-newspaper" style="font-size: 48px; color: var(--gray-300); margin-bottom: 16px;"></i>
+                            <h4>No hay publicaciones aún</h4>
+                            <p style="color: var(--gray-600);">Sé el primero en compartir algo interesante.</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = posts.map(post => createPostHTML(post)).join('');
+        }
+
+        function createPostHTML(post) {
+            const authorInitials = getInitials(post.authorFirstName, post.authorLastName);
+            const timeAgo = formatTimeAgo(post.createdAt);
+            const isLiked = post.isLikedByCurrentUser;
+            
+            return `
+                <div class="card-prolink post-card" data-post-id="${post.id}">
+                    <div class="card-body-prolink">
+                        <div class="post-header">
+                            <div class="post-avatar">${authorInitials}</div>
+                            <div class="post-author">
+                                <div class="author-name">${post.authorFirstName} ${post.authorLastName}</div>
+                                <div class="author-title">@${post.authorUsername}</div>
+                                <div class="post-time">${timeAgo}</div>
+                            </div>
+                            ${currentUser && currentUser.id === post.authorId ? `
+                                <button class="post-menu" onclick="deletePost(${post.id})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            ` : `
+                                <button class="post-menu">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            `}
+                        </div>
+                        
+                        <div class="post-content">
+                            ${post.content}
+                        </div>
+                        
+                        ${post.imageUrl ? `
+                            <div class="post-media" style="margin: 12px 0;">
+                                <img src="${post.imageUrl}" alt="Post image" style="width: 100%; border-radius: 4px;">
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="post-actions">
+                        <button class="action-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike(${post.id})">
+                            <i class="${isLiked ? 'fas' : 'far'} fa-thumbs-up"></i>
+                            <span>${post.likesCount || 0}</span>
+                        </button>
+                        <button class="action-btn" onclick="showComments(${post.id})">
+                            <i class="far fa-comment"></i>
+                            <span>${post.commentsCount || 0}</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-share-square"></i>
+                            <span>Compartir</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function publishPost() {
+            const content = document.getElementById('postContent').value.trim();
+            if (!content || !authToken) return;
+
+            const publishBtn = document.getElementById('publishBtn');
+            publishBtn.disabled = true;
+            publishBtn.innerHTML = '<span class="loading"></span> Publicando...';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/posts`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({
+                        content: content,
+                        type: 'TEXT'
+                    })
+                });
+
+                if (response.ok) {
+                    const newPost = await response.json();
+                    posts.unshift(newPost);
+                    renderPosts();
+                    
+                    document.getElementById('postContent').value = '';
+                    showToast('Publicación creada exitosamente');
+                } else {
+                    throw new Error('Error al crear la publicación');
+                }
+            } catch (error) {
+                showToast(error.message, 'error');
+            } finally {
+                publishBtn.disabled = false;
+                publishBtn.textContent = 'Publicar';
+            }
+        }
+
+        async function toggleLike(postId) {
+            if (!authToken) return;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/posts/${postId}/like`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    // Update local post data
+                    const post = posts.find(p => p.id === postId);
+                    if (post) {
+                        post.isLikedByCurrentUser = !post.isLikedByCurrentUser;
+                        post.likesCount += post.isLikedByCurrentUser ? 1 : -1;
+                        renderPosts();
+                    }
+                }
+            } catch (error) {
+                console.error('Error toggling like:', error);
+            }
+        }
+
+        async function deletePost(postId) {
+            if (!confirm('¿Estás seguro de que quieres eliminar esta publicación?')) return;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/posts/${postId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    posts = posts.filter(p => p.id !== postId);
+                    renderPosts();
+                    showToast('Publicación eliminada');
+                } else {
+                    throw new Error('Error al eliminar la publicación');
+                }
+            } catch (error) {
+                showToast(error.message, 'error');
+            }
+        }
+
+        // =================================
+        // NAVIGATION
+        // =================================
+        function showFeed() {
+            hideAllViews();
+            const feedElement = document.getElementById('feedView');
+            if (feedElement) {
+                feedElement.classList.remove('d-none');
+            }
+            updateActiveNavItem('nav-home');
+            
+            if (authToken) {
+                loadPosts();
+            }
+        }
+
+        function showNetwork() {
+            hideAllViews();
+            const networkElement = document.getElementById('networkView');
+            if (networkElement) {
+                networkElement.classList.remove('d-none');
+            }
+            updateActiveNavItem('nav-network');
+            loadNetworkData();
+        }
+
+        function showMessages() {
+            hideAllViews();
+            const messagesElement = document.getElementById('messagesView');
+            if (messagesElement) {
+                messagesElement.classList.remove('d-none');
+            }
+            updateActiveNavItem('nav-messages');
+            loadMessagesData();
+        }
+
+        function showNotifications() {
+            hideAllViews();
+            const notificationsElement = document.getElementById('notificationsView');
+            if (notificationsElement) {
+                notificationsElement.classList.remove('d-none');
+            }
+            updateActiveNavItem('nav-notifications');
+            loadNotificationsData();
+        }
+
+        function showProfile() {
+            hideAllViews();
+            const profileElement = document.getElementById('profileView');
+            if (profileElement) {
+                profileElement.classList.remove('d-none');
+            }
+            updateActiveNavItem('nav-profile');
+            loadProfileData();
+        }
+
+        function hideAllViews() {
+            const views = ['feedView', 'networkView', 'messagesView', 'notificationsView', 'profileView'];
+            views.forEach(viewId => {
+                const element = document.getElementById(viewId);
+                if (element) {
+                    element.classList.add('d-none');
+                }
+            });
+        }
+
+        function updateActiveNavItem(activeId) {
+            document.querySelectorAll('.nav-item-prolink').forEach(el => el.classList.remove('active'));
+            const activeElement = document.getElementById(activeId);
+            if (activeElement) {
+                activeElement.classList.add('active');
+            }
+        }
+
+        // =================================
+        // NETWORK VIEW FUNCTIONS
+        // =================================
+        function loadNetworkData() {
+            if (!authToken) return;
+
+            // Simulate loading network data
+            console.log('Loading network data...');
+            
+            // In a real implementation, you would fetch data from your API
+            // For now, we'll just show the static content that's already in the HTML
+        }
+
+        function acceptConnection(userId) {
+            if (!authToken) return;
+
+            fetch(`/api/connections/accept/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('Conexión aceptada', 'success');
+                    loadNetworkData();
+                } else {
+                    showToast('Error al aceptar conexión', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error accepting connection:', error);
+                showToast('Error al aceptar conexión', 'error');
+            });
+        }
+
+        function rejectConnection(userId) {
+            if (!authToken) return;
+
+            fetch(`/api/connections/reject/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('Solicitud rechazada', 'success');
+                    loadNetworkData();
+                } else {
+                    showToast('Error al rechazar solicitud', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error rejecting connection:', error);
+                showToast('Error al rechazar solicitud', 'error');
+            });
+        }
+
+        function sendConnectionRequest(userId) {
+            if (!authToken) return;
+
+            fetch(`/api/connections/request/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('Solicitud de conexión enviada', 'success');
+                    loadNetworkData();
+                } else {
+                    showToast('Error al enviar solicitud', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error sending connection request:', error);
+                showToast('Error al enviar solicitud', 'error');
+            });
+        }
+
+        // =================================
+        // MESSAGES VIEW FUNCTIONS
+        // =================================
+        function loadMessagesData() {
+            if (!authToken) return;
+
+            console.log('Loading messages data...');
+            
+            // In a real implementation, fetch conversations from API
+        }
+
+        function selectConversation(userId, username) {
+            // Remove active class from all conversations
+            document.querySelectorAll('.conversation-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active class to clicked conversation
+            event.target.closest('.conversation-item').classList.add('active');
+
+            // Load messages for this conversation
+            loadConversationMessages(userId, username);
+        }
+
+        function loadConversationMessages(userId, username) {
+            if (!authToken) return;
+
+            // Update chat header
+            const chatHeader = document.querySelector('.chat-header h6');
+            if (chatHeader) {
+                chatHeader.textContent = `Chat with ${username}`;
+            }
+
+            // Store current conversation
+            window.currentConversationUserId = userId;
+
+            // In a real implementation, fetch messages from API
+            console.log(`Loading conversation with user ${userId}`);
+        }
+
+        function sendMessage() {
+            if (!authToken || !window.currentConversationUserId) return;
+
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+            
+            if (!messageText) return;
+
+            // Clear input immediately for better UX
+            messageInput.value = '';
+
+            // Add message to thread
+            addMessageToThread(messageText, true);
+
+            // In a real implementation, send to API
+            console.log('Sending message:', messageText);
+        }
+
+        function addMessageToThread(content, isSent) {
+            const messageThread = document.querySelector('.message-thread');
+            if (!messageThread) return;
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isSent ? 'sent' : 'received'}`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    ${escapeHtml(content)}
+                </div>
+            `;
+            
+            messageThread.appendChild(messageDiv);
+            messageThread.scrollTop = messageThread.scrollHeight;
+        }
+
+        // =================================
+        // NOTIFICATIONS VIEW FUNCTIONS
+        // =================================
+        function loadNotificationsData() {
+            if (!authToken) return;
+
+            console.log('Loading notifications data...');
+            
+            // In a real implementation, fetch notifications from API
+        }
+
+        function markAsRead(notificationId) {
+            if (!authToken) return;
+
+            const notificationElement = document.querySelector(`[data-notification-id="${notificationId}"]`);
+            if (notificationElement) {
+                notificationElement.classList.remove('unread');
+            }
+
+            // In a real implementation, update via API
+            console.log('Marking notification as read:', notificationId);
+        }
+
+        // =================================
+        // PROFILE VIEW FUNCTIONS
+        // =================================
+        function loadProfileData() {
+            if (!authToken) return;
+
+            console.log('Loading profile data...');
+            
+            // In a real implementation, fetch user profile from API
+        }
+
+        function editProfile() {
+            showToast('Funcionalidad de edición próximamente', 'info');
+        }
+
+        function addExperience() {
+            showToast('Agregar experiencia próximamente', 'info');
+        }
+
+        function addEducation() {
+            showToast('Agregar educación próximamente', 'info');
+        }
+
+        // =================================
+        // UTILITY FUNCTIONS
+        // =================================
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
+        function toggleUserMenu() {
+            if (!currentUser) {
+                showAuth('login');
+                return;
+            }
+            
+            // Simple logout for now - could be expanded to full menu
+            if (confirm('¿Cerrar sesión?')) {
+                logout();
+            }
+        }
+
+        // =================================
+        // GLOBAL DEMO FUNCTIONS (accessible from HTML buttons)
+        // =================================
+        
+        // Simple test function
+        function simpleTest() {
+            showToast('¡Los botones funcionan correctamente! 🎉', 'success');
+            console.log('Simple test executed successfully');
+        }
+
+        // Test function to verify everything works
+        function testConnection() {
+            console.log('TestConnection function called'); // Debug log
+            showToast('🔄 Probando conexión...', 'info');
+            
+            fetch(`${API_BASE_URL}/posts`)
+                .then(response => {
+                    console.log('Backend response status:', response.status);
+                    if (response.ok) {
+                        showToast('✅ Conexión con backend exitosa!', 'success');
+                    } else {
+                        showToast('⚠️ Backend responde pero necesitas login', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Backend connection error:', error);
+                    showToast('❌ Error de conexión con backend', 'error');
+                });
+        }
+
+        // Quick demo function
+        function quickDemo() {
+            console.log('QuickDemo function called'); // Debug log
+            showToast('🎯 Abriendo modal de login...', 'info');
+            
+            // First open the login modal
+            showAuth('login');
+            
+            // Wait a moment for modal to render, then fill the form
+            setTimeout(() => {
+                console.log('Attempting to fill form fields'); // Debug log
+                
+                const usernameField = document.getElementById('loginUsername');
+                const passwordField = document.getElementById('loginPassword');
+                
+                console.log('Username field found:', !!usernameField); // Debug log
+                console.log('Password field found:', !!passwordField); // Debug log
+                
+                if (usernameField && passwordField) {
+                    usernameField.value = 'testuser';
+                    passwordField.value = 'password123';
+                    showToast('🚀 Demo: Datos prellenados! Haz clic en "Iniciar Sesión"', 'success');
+                    console.log('Form filled successfully'); // Debug log
+                } else {
+                    showToast('⚠️ Abre el login manualmente', 'error');
+                    console.error('Could not find login fields');
+                }
+            }, 300); // Increased timeout more
+        }
+
+        // Make sure functions are available globally
+        window.testConnection = testConnection;
+        window.quickDemo = quickDemo;
+        window.simpleTest = simpleTest;
+
+        // =================================
+        // EVENT LISTENERS
+        // =================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for stored auth
+            const storedToken = localStorage.getItem('authToken');
+            const storedUser = localStorage.getItem('currentUser');
+            
+            if (storedToken && storedUser) {
+                authToken = storedToken;
+                currentUser = JSON.parse(storedUser);
+                showAuthenticatedUI();
+                loadPosts();
+            } else {
+                showGuestUI();
+            }
+
+            // Post composer
+            const postContent = document.getElementById('postContent');
+            const publishBtn = document.getElementById('publishBtn');
+            
+            postContent.addEventListener('input', function() {
+                publishBtn.disabled = !this.value.trim();
+            });
+
+            postContent.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    publishPost();
+                }
+            });
+
+            // Auth form handling
+            document.getElementById('authForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                clearFormErrors();
+
+                if (isAuthMode === 'login') {
+                    const usernameOrEmail = document.getElementById('loginUsername').value.trim();
+                    const password = document.getElementById('loginPassword').value;
+                    
+                    if (!usernameOrEmail) {
+                        showFormError('loginUsername', 'Este campo es obligatorio');
+                        return;
+                    }
+                    if (!password) {
+                        showFormError('loginPassword', 'Este campo es obligatorio');
+                        return;
+                    }
+
+                    const loginBtn = document.getElementById('loginBtn');
+                    loginBtn.disabled = true;
+                    loginBtn.innerHTML = '<span class="loading"></span> Iniciando sesión...';
+
+                    const success = await login(usernameOrEmail, password);
+                    
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = 'Iniciar Sesión';
+                    
+                    if (success) {
+                        document.getElementById('loginUsername').value = '';
+                        document.getElementById('loginPassword').value = '';
+                    }
+                } else {
+                    const firstName = document.getElementById('registerFirstName').value.trim();
+                    const lastName = document.getElementById('registerLastName').value.trim();
+                    const email = document.getElementById('registerEmail').value.trim();
+                    const username = document.getElementById('registerUsername').value.trim();
+                    const password = document.getElementById('registerPassword').value;
+
+                    // Basic validation
+                    let hasError = false;
+                    if (!firstName) {
+                        showFormError('registerFirstName', 'Este campo es obligatorio');
+                        hasError = true;
+                    }
+                    if (!lastName) {
+                        showFormError('registerLastName', 'Este campo es obligatorio');
+                        hasError = true;
+                    }
+                    if (!email || !email.includes('@')) {
+                        showFormError('registerEmail', 'Email válido requerido');
+                        hasError = true;
+                    }
+                    if (!username || username.length < 3) {
+                        showFormError('registerUsername', 'Mínimo 3 caracteres');
+                        hasError = true;
+                    }
+                    if (!password || password.length < 6) {
+                        showFormError('registerPassword', 'Mínimo 6 caracteres');
+                        hasError = true;
+                    }
+
+                    if (hasError) return;
+
+                    const registerBtn = document.getElementById('registerBtn');
+                    registerBtn.disabled = true;
+                    registerBtn.innerHTML = '<span class="loading"></span> Registrando...';
+
+                    const success = await register({
+                        firstName,
+                        lastName,
+                        email,
+                        username,
+                        password
+                    });
+
+                    registerBtn.disabled = false;
+                    registerBtn.textContent = 'Registrarse';
+                    
+                    if (success) {
+                        // Clear form
+                        document.getElementById('registerFirstName').value = '';
+                        document.getElementById('registerLastName').value = '';
+                        document.getElementById('registerEmail').value = '';
+                        document.getElementById('registerUsername').value = '';
+                        document.getElementById('registerPassword').value = '';
+                    }
+                }
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            let searchTimeout;
+            
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    const query = this.value.trim();
+                    if (query.length > 2) {
+                        // TODO: Implement search
+                        console.log('Searching for:', query);
+                    }
+                }, 500);
+            });
+
+            // Close modal on outside click
+            document.getElementById('authModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideAuth();
+                }
+            });
+        });
+
+        // Media selection placeholders
+        function selectMedia(type) {
+            showToast(`Función de ${type} próximamente`, 'error');
+        }
+
+        function showComments(postId) {
+            showToast('Sistema de comentarios próximamente', 'error');
+        }
+    </script>
+</body>
+</html>

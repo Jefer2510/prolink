@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    
+    <display-name>ProLink Frontend</display-name>
+    <description>LinkedIn Clone Frontend - Java Servlets + JSP</description>
+    
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>false</secure>
+        </cookie-config>
+    </session-config>
+    
+    <!-- Welcome Files -->
+    <welcome-file-list>
+        <welcome-file>login</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Error Pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/error/404.jsp</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/error/500.jsp</location>
+    </error-page>
+    
+    <!-- Security Constraint for Authentication -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Protected Area</web-resource-name>
+            <url-pattern>/dashboard/*</url-pattern>
+            <url-pattern>/profile/*</url-pattern>
+            <url-pattern>/messages/*</url-pattern>
+            <url-pattern>/connections/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+    
+    <!-- Context Parameters -->
+    <context-param>
+        <param-name>backend.api.url</param-name>
+        <param-value>http://localhost:8080/api/v1</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>app.name</param-name>
+        <param-value>ProLink</param-value>
+    </context-param>
+</web-app>

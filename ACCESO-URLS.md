@@ -5,6 +5,7 @@
 ## 🔗 **URLs Locales (desde el mismo servidor):**
 - **Aplicación Principal:** http://localhost/prolink/prolink-app.html
 - **Página de Inicio:** http://localhost/prolink/index.html  
+- **Carpeta del Proyecto:** http://localhost/prolink/
 - **API Backend:** http://localhost:8080/
 - **Swagger API Docs:** http://localhost:8080/swagger-ui.html
 

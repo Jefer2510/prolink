@@ -229,7 +229,7 @@
         async function checkServices() {
             // Verificar Backend
             try {
-                const response = await fetch('http://localhost:8080/api/v1/auth/health');
+                const response = await fetch('/api/v1/auth/health');
                 if (response.ok) {
                     document.getElementById('backendStatus').className = 'status-indicator status-online';
                     document.getElementById('backendStatusText').textContent = '✅ Online';
@@ -247,7 +247,7 @@
 
             // Oracle se asume online si backend funciona
             try {
-                const response = await fetch('http://localhost:8080/api/v1/auth/health');
+                const response = await fetch('/api/v1/auth/health');
                 if (response.ok) {
                     document.getElementById('oracleStatus').className = 'status-indicator status-online';
                     document.getElementById('oracleStatusText').textContent = '✅ Connected';
@@ -265,7 +265,7 @@
         }
 
         function openAPI() {
-            window.open('http://localhost:8080/api/v1/', '_blank');
+            window.open('/api/v1/', '_blank');
         }
 
         // Verificar servicios al cargar

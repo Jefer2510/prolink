@@ -29,13 +29,15 @@
             --white: #ffffff;
             
             /* Status Colors */
-            --success: #057642;
-            --warning: #f5c75d;
-            --danger: #cc1016;
+            --success: #43e97b;
+            --warning: #fbbf24;
+            --danger: #ef4444;
             
             /* Spacing & Effects */
             --border-radius: 8px;
-            --box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 0 0 rgba(0,0,0,0);
+            
+            /* Simple shadows */
+            --box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
             --box-shadow-hover: 0 4px 8px rgba(0,0,0,0.12);
         }
 
@@ -148,7 +150,7 @@
             top: -2px;
             right: -2px;
             background-color: var(--danger);
-            color: #000000;
+            color: white;
             border-radius: 50%;
             width: 16px;
             height: 16px;
@@ -187,12 +189,12 @@
            CARDS & COMPONENTS
         ================================= */
         .card-prolink {
-            background: rgba(128, 128, 128, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(128, 128, 128, 0.2);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--glass-shadow);
             margin-bottom: 20px;
             overflow: hidden;
             position: relative;
@@ -207,16 +209,15 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.08) 0%, 
-                rgba(255, 255, 255, 0.02) 100%);
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
             pointer-events: none;
         }
 
         .card-prolink:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-            border-color: rgba(128, 128, 128, 0.4);
-            background: rgba(128, 128, 128, 0.4);
+            box-shadow: var(--shadow-elevated), var(--shadow-glow);
+            border-color: rgba(102, 126, 234, 0.3);
         }
 
         .card-header-prolink {
@@ -412,7 +413,7 @@
 
         .btn-post {
             background: var(--primary-blue);
-            color: #000000;
+            color: white;
             border: none;
             padding: 8px 24px;
             border-radius: 20px;
@@ -568,7 +569,7 @@
 
         .action-btn:hover {
             background: var(--accent-gradient);
-            color: #000000;
+            color: white;
             border-color: var(--accent-purple);
             transform: translateY(-2px) scale(1.02);
             box-shadow: var(--shadow-glow-purple);
@@ -581,7 +582,7 @@
 
         .action-btn.liked {
             background: var(--primary-gradient);
-            color: #000000;
+            color: white;
             border-color: var(--accent-cyan);
             box-shadow: var(--shadow-glow);
         }
@@ -650,7 +651,7 @@
 
         .btn-connect:hover {
             background: var(--primary-blue);
-            color: #000000;
+            color: white;
         }
 
         /* =================================
@@ -780,7 +781,7 @@
 
         .btn-primary {
             background: var(--primary-gradient);
-            color: #000000;
+            color: white;
             border: none;
             padding: 14px 28px;
             border-radius: var(--border-radius-lg);
@@ -954,7 +955,7 @@
 
         .message.sent .message-content {
             background: var(--primary-blue);
-            color: #000000;
+            color: white;
         }
 
         /* =================================
@@ -1080,10 +1081,11 @@
            EDIT PROFILE MODAL STYLES
         ================================= */
         .modal-content {
-            background: #ffffff !important;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-float);
             position: relative;
             overflow: hidden;
         }
@@ -1095,53 +1097,64 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: var(--primary-blue);
+            background: var(--primary-gradient);
         }
 
         .modal-header {
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--glass-border);
             padding: 24px 28px;
-            background: #ffffff !important;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.2) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
         }
 
         .modal-title {
-            color: #000000 !important;
+            color: var(--text-primary);
             font-weight: 700;
             font-size: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: 0.5px;
         }
 
         .modal-body {
             padding: 28px 32px;
-            background: #ffffff !important;
-            color: #000000 !important;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
         }
 
         .form-control {
-            background: #ffffff !important;
-            border: 1px solid #ccc !important;
-            border-radius: 4px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: var(--border-radius);
             padding: 14px 18px;
             font-size: 14px;
-            color: #000000 !important;
-            transition: all 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-soft);
         }
 
         .form-control::placeholder {
-            color: #666666 !important;
+            color: var(--text-secondary);
             transition: color 0.3s ease;
         }
 
         .form-control:focus {
-            border-color: var(--primary-blue) !important;
-            background: #ffffff !important;
-            box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.2);
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1), 
+                        0 0 20px rgba(6, 182, 212, 0.3),
+                        inset 0 1px 2px rgba(0, 0, 0, 0.1);
             outline: none;
+            transform: translateY(-1px) scale(1.01);
         }
 
         .form-control:focus::placeholder {
-            color: #999999 !important;
+            color: var(--accent-cyan);
         }
 
         .profile-preview {
@@ -1162,40 +1175,11 @@
         }
 
         .modal-footer {
-            border-top: 1px solid #e0e0e0;
+            border-top: 1px solid var(--glass-border);
             padding: 20px 28px;
-            background: #ffffff !important;
-        }
-
-        /* Estilos específicos para el modal de perfil */
-        .modal-body label, 
-        .modal-body .form-label {
-            color: #000000 !important;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .modal-body .text-muted,
-        .modal-body small {
-            color: #666666 !important;
-        }
-
-        .modal-body .btn {
-            background: #ffffff !important;
-            color: #000000 !important;
-            border: 1px solid #ccc !important;
-        }
-
-        .modal-body .btn-primary {
-            background: var(--primary-blue) !important;
-            color: #000000 !important;
-            border: 1px solid var(--primary-blue) !important;
-        }
-
-        .modal-body .btn-secondary {
-            background: #f8f9fa !important;
-            color: #000000 !important;
-            border: 1px solid #ccc !important;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
         }
 
         .btn-secondary {
@@ -1229,7 +1213,7 @@
 
         .btn-secondary:hover {
             background: var(--accent-gradient);
-            color: #000000;
+            color: white;
             border-color: transparent;
             transform: translateY(-2px) scale(1.02);
             box-shadow: var(--shadow-glow-purple);
@@ -1524,7 +1508,7 @@
                                 </div>
                                 <div class="card-body-prolink" style="padding: 0;">
                                     <div id="conversationsList">
-                                        <div class="conversation-item active" onclick="selectConversation(1, 'Juan Pérez')">
+                                        <div class="conversation-item active" onclick="selectConversation(1)">
                                             <div class="d-flex align-items-center p-3 border-bottom">
                                                 <div class="suggestion-avatar">JD</div>
                                                 <div class="flex-grow-1 ms-3">
@@ -1535,7 +1519,7 @@
                                                 <div class="notification-badge">2</div>
                                             </div>
                                         </div>
-                                        <div class="conversation-item" onclick="selectConversation(2, 'María García')">
+                                        <div class="conversation-item" onclick="selectConversation(2)">
                                             <div class="d-flex align-items-center p-3 border-bottom">
                                                 <div class="suggestion-avatar">MG</div>
                                                 <div class="flex-grow-1 ms-3">
@@ -1810,23 +1794,7 @@
         // =================================
         // GLOBAL VARIABLES & CONFIG
         // =================================
-        
-        // 🔧 CONFIGURACIÓN DE SERVIDOR 
-        // ==========================================
-        // Para cambiar de IP/servidor, solo modifica estas líneas:
-        // 
-        // Ejemplos de uso:
-        // - Misma máquina: 'localhost'
-        // - Red local: '192.168.1.100'  
-        // - Servidor público: 'mi-servidor.com' o '203.0.113.1'
-        // ==========================================
-        const SERVER_IP = 'localhost';  
-        const SERVER_PORT = '8080';
-        
-        // URLs generadas automáticamente - NO modificar
-        const API_BASE_URL = `http://${SERVER_IP}:${SERVER_PORT}/api/v1`;
-        const H2_CONSOLE_URL = `http://${SERVER_IP}:${SERVER_PORT}/api/v1/h2-console`;
-        
+        const API_BASE_URL = 'http://localhost:8080/api/v1';
         let currentUser = null;
         let authToken = null;
         let posts = [];
@@ -2373,7 +2341,7 @@
                 return;
             }
             
-            fetch(`${API_BASE_URL}/connections`, {
+            fetch(`http://localhost:8080/api/v1/connections`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -2432,7 +2400,7 @@
                 return;
             }
             
-            fetch(`${API_BASE_URL}/connections/pending/received`, {
+            fetch(`http://localhost:8080/api/v1/connections/pending/received`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -2477,7 +2445,7 @@
                 return;
             }
             
-            fetch(`${API_BASE_URL}/connections/suggestions`, {
+            fetch(`http://localhost:8080/api/v1/connections/suggestions`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -2515,7 +2483,7 @@
         function acceptConnection(requestId) {
             if (!authToken) return;
 
-            fetch(`${API_BASE_URL}/connections/accept/${requestId}`, {
+            fetch(`http://localhost:8080/api/v1/connections/accept/${requestId}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${authToken}`,
@@ -2540,7 +2508,7 @@
         function rejectConnection(requestId) {
             if (!authToken) return;
 
-            fetch(`${API_BASE_URL}/connections/reject/${requestId}`, {
+            fetch(`http://localhost:8080/api/v1/connections/reject/${requestId}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${authToken}`,
@@ -2565,7 +2533,7 @@
         function sendConnectionRequest(userId) {
             if (!authToken) return;
 
-            fetch(`${API_BASE_URL}/connections/request`, {
+            fetch(`http://localhost:8080/api/v1/connections/request`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${authToken}`,
@@ -2606,14 +2574,6 @@
 
             console.log('Loading messages data...');
             
-            // Initialize first conversation by default
-            setTimeout(() => {
-                const firstConversation = document.querySelector('.conversation-item.active');
-                if (firstConversation) {
-                    firstConversation.click();
-                }
-            }, 100);
-            
             // In a real implementation, fetch conversations from API
         }
 
@@ -2624,12 +2584,7 @@
             });
 
             // Add active class to clicked conversation
-            if (event && event.target) {
-                const conversationItem = event.target.closest('.conversation-item');
-                if (conversationItem) {
-                    conversationItem.classList.add('active');
-                }
-            }
+            event.target.closest('.conversation-item').classList.add('active');
 
             // Load messages for this conversation
             loadConversationMessages(userId, username);
@@ -2641,56 +2596,14 @@
             // Update chat header
             const chatHeader = document.querySelector('.chat-header h6');
             if (chatHeader) {
-                chatHeader.textContent = `Chat with ${username || `Usuario ${userId}`}`;
+                chatHeader.textContent = `Chat with ${username}`;
             }
 
             // Store current conversation
             window.currentConversationUserId = userId;
-            window.currentConversationUsername = username;
 
-            // Clear current messages
-            const messageThread = document.querySelector('.message-thread');
-            if (messageThread) {
-                messageThread.innerHTML = '';
-            }
-
-            // Load messages from localStorage
-            loadStoredMessages(userId);
-
+            // In a real implementation, fetch messages from API
             console.log(`Loading conversation with user ${userId}`);
-        }
-
-        // =================================
-        // MESSAGE STORAGE FUNCTIONS
-        // =================================
-        function storeMessage(conversationId, message) {
-            try {
-                const storageKey = `prolink_messages_${conversationId}`;
-                let messages = JSON.parse(localStorage.getItem(storageKey) || '[]');
-                messages.push(message);
-                
-                // Keep only last 100 messages per conversation
-                if (messages.length > 100) {
-                    messages = messages.slice(-100);
-                }
-                
-                localStorage.setItem(storageKey, JSON.stringify(messages));
-            } catch (error) {
-                console.error('Error storing message:', error);
-            }
-        }
-
-        function loadStoredMessages(conversationId) {
-            try {
-                const storageKey = `prolink_messages_${conversationId}`;
-                const messages = JSON.parse(localStorage.getItem(storageKey) || '[]');
-                
-                messages.forEach(message => {
-                    addMessageToThread(message.content, message.isSent);
-                });
-            } catch (error) {
-                console.error('Error loading messages:', error);
-            }
         }
 
         function sendMessage() {
@@ -2704,57 +2617,11 @@
             // Clear input immediately for better UX
             messageInput.value = '';
 
-            // Create message object
-            const message = {
-                id: Date.now(),
-                content: messageText,
-                isSent: true,
-                timestamp: new Date().toISOString(),
-                conversationId: window.currentConversationUserId
-            };
-
             // Add message to thread
             addMessageToThread(messageText, true);
 
-            // Store message locally
-            storeMessage(window.currentConversationUserId, message);
-
-            // Simulate auto-response after a short delay (for testing)
-            setTimeout(() => {
-                simulateAutoResponse(window.currentConversationUserId, messageText);
-            }, 2000);
-
             // In a real implementation, send to API
             console.log('Sending message:', messageText);
-        }
-
-        function simulateAutoResponse(conversationId, originalMessage) {
-            // Only respond if this is still the active conversation
-            if (window.currentConversationUserId !== conversationId) return;
-
-            const responses = [
-                "¡Hola! Gracias por tu mensaje.",
-                "Perfecto, entendido.",
-                "¿Podrías darme más detalles?",
-                "Excelente, hablamos después.",
-                "De acuerdo, revisaré eso.",
-                "¡Genial! Me parece bien."
-            ];
-
-            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            
-            // Create response message
-            const responseMessage = {
-                id: Date.now() + 1,
-                content: randomResponse,
-                isSent: false,
-                timestamp: new Date().toISOString(),
-                conversationId: conversationId
-            };
-
-            // Add to thread and store
-            addMessageToThread(randomResponse, false);
-            storeMessage(conversationId, responseMessage);
         }
 
         function addMessageToThread(content, isSent) {
@@ -2806,7 +2673,7 @@
             console.log('Loading profile data...');
             
             // Fetch user profile from API
-            fetch(`${API_BASE_URL}/users/profile`, {
+            fetch(`http://localhost:8080/api/v1/users/profile`, {
                 headers: {
                     'Authorization': `Bearer ${authToken}`,
                     'Content-Type': 'application/json'
@@ -2924,7 +2791,7 @@
                         // Show initials or default icon
                         const initials = getInitials(userData.fullName || userData.firstName, userData.lastName);
                         if (initials) {
-                            element.innerHTML = `<span style="color: #000000; font-weight: 600;">${initials}</span>`;
+                            element.innerHTML = `<span style="color: white; font-weight: 600;">${initials}</span>`;
                         } else {
                             element.innerHTML = '<i class="fas fa-user"></i>';
                         }
@@ -2951,7 +2818,7 @@
                 container.innerHTML = `
                     <div class="experience-item" style="padding: 16px 0; border-bottom: 1px solid #eee;">
                         <div class="d-flex align-items-start">
-                            <div class="company-logo" style="width: 48px; height: 48px; background: var(--primary-blue); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #000000; font-weight: bold; margin-right: 12px;">
+                            <div class="company-logo" style="width: 48px; height: 48px; background: var(--primary-blue); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 12px;">
                                 ${(userData.industry || 'C').charAt(0)}
                             </div>
                             <div style="flex: 1;">
@@ -2975,7 +2842,7 @@
             container.innerHTML = `
                 <div class="education-item" style="padding: 16px 0; border-bottom: 1px solid #eee;">
                     <div class="d-flex align-items-start">
-                        <div class="school-logo" style="width: 48px; height: 48px; background: #28a745; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #000000; font-weight: bold; margin-right: 12px;">
+                        <div class="school-logo" style="width: 48px; height: 48px; background: #28a745; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 12px;">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div style="flex: 1;">
@@ -3071,7 +2938,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Foto de Perfil</label>
                                         <div class="d-flex align-items-center gap-3">
-                                            <div class="profile-preview" style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-blue); display: flex; align-items: center; justify-content: center; color: #000000; font-size: 24px;" id="profilePreviewContainer">
+                                            <div class="profile-preview" style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;" id="profilePreviewContainer">
                                                 <i class="fas fa-user" id="profilePreview"></i>
                                             </div>
                                             <div>
@@ -3230,7 +3097,7 @@
             // Process profile update
             profileImagePromise.then((imageData) => {
                 // Send update request
-                fetch(`${API_BASE_URL}/users/profile`, {
+                fetch(`http://localhost:8080/api/v1/users/profile`, {
                     method: 'PUT',
                     headers: {
                         'Authorization': `Bearer ${authToken}`,

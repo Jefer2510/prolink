@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProLink - Red Profesional</title>
+    <meta name="description" content="ProLink - La red social profesional para conectar talento">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0a66c2;
+            --primary-dark: #004182;
+            --primary-light: #e7f3ff;
+            --gray-100: #f3f2ef;
+            --gray-200: #e9e5df;
+            --gray-300: #d0cec7;
+            --gray-600: #666666;
+            --gray-900: #000000;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --text-primary: #000000e6;
+            --text-secondary: #00000099;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION */
+        .navbar-prolink {
+            background-color: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0;
+            min-height: 56px;
+        }
+
+        .logo-prolink {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-right: 2rem;
+        }
+
+        .logo-prolink:hover {
+            color: var(--primary-dark);
+        }
+
+        .search-container {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 12px 8px 40px;
+            border: 1px solid var(--gray-300);
+            border-radius: 2px;
+            background-color: var(--gray-100);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            background-color: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-600);
+        }
+
+        .nav-item-prolink {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: var(--gray-600);
+            transition: color 0.2s ease;
+            border-radius: 4px;
+            min-width: 80px;
+        }
+
+        .nav-item-prolink:hover {
+            color: var(--primary-blue);
+            background-color: var(--gray-100);
+        }
+
+        .nav-item-prolink.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-item-prolink i {
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+
+        .nav-item-prolink span {
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        /* MAIN LAYOUT */
+        .container-prolink {
+            max-width: 1128px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .row-prolink {
+            display: grid;
+            grid-template-columns: 225px 1fr 300px;
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+            margin-bottom: 16px;
+        }
+
+        /* PROFILE SIDEBAR */
+        .profile-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-cover {
+            height: 54px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .profile-avatar {
+            width: 72px;
+            height: 72px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            margin: -36px auto 12px;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--gray-600);
+        }
+
+        .profile-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--gray-900);
+        }
+
+        .profile-title {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+
+        .profile-stats {
+            border-top: 1px solid var(--gray-200);
+            padding-top: 12px;
+            font-size: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: var(--gray-600);
+        }
+
+        .stat-number {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* POST CREATION */
+        .post-composer {
+            padding: 16px;
+        }
+
+        .composer-input {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .composer-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 18px;
+        }
+
+        .composer-textarea {
+            flex: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 16px;
+            line-height: 1.4;
+            min-height: 48px;
+            background: transparent;
+        }
+
+        .composer-textarea::placeholder {
+            color: var(--gray-600);
+        }
+
+        .composer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .media-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .media-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: none;
+            background: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--gray-600);
+            transition: background-color 0.2s;
+        }
+
+        .media-btn:hover {
+            background-color: var(--gray-100);
+        }
+
+        .btn-post {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-post:hover:not(:disabled) {
+            background: var(--primary-dark);
+        }
+
+        .btn-post:disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+        }
+
+        /* POSTS */
+        .post-card {
+            margin-bottom: 16px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .post-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 18px;
+        }
+
+        .post-author {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--gray-900);
+            margin-bottom: 2px;
+        }
+
+        .author-title {
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 2px;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .post-menu {
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .post-menu:hover {
+            background: var(--gray-100);
+        }
+
+        .post-content {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            color: var(--gray-900);
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 8px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--gray-100);
+        }
+
+        .action-btn.liked {
+            color: var(--primary-blue);
+        }
+
+        /* RIGHT SIDEBAR */
+        .suggestions-card h6 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--gray-900);
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .suggestion-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 18px;
+        }
+
+        .suggestion-info {
+            flex: 1;
+        }
+
+        .suggestion-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+            color: var(--gray-900);
+        }
+
+        .suggestion-title {
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .btn-connect {
+            background: none;
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 4px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-connect:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--primary-dark);
+        }
+
+        .btn-primary:disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-100);
+            border: 1px solid var(--gray-300);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--gray-200);
+        }
+
+        /* FORMS */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--gray-900);
+            font-size: 14px;
+        }
+
+        .form-control {
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.1);
+            outline: none;
+        }
+
+        /* MODAL */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1050;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-modal.active {
+            display: flex;
+        }
+
+        .auth-content {
+            background: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 400px;
+            padding: 32px;
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 20px 24px;
+        }
+
+        .modal-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--gray-200);
+            padding: 16px 24px;
+        }
+
+        /* UTILITIES */
+        .d-none { display: none !important; }
+        .text-center { text-align: center; }
+        .mb-3 { margin-bottom: 1rem; }
+        .p-3 { padding: 1rem; }
+        .px-4 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .fw-bold { font-weight: 600; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .row-prolink {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .container-prolink {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-prolink">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center w-100">
+                <a href="#" class="logo-prolink">
+                    <i class="fab fa-linkedin"></i> ProLink
+                </a>
+                
+                <div class="search-container">
+                    <div class="position-relative">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Buscar">
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <a href="#" class="nav-item-prolink active" onclick="showSection('inicio')">
+                        <i class="fas fa-home"></i>
+                        <span>Inicio</span>
+                    </a>
+                    <a href="#" class="nav-item-prolink" onclick="showSection('red')">
+                        <i class="fas fa-users"></i>
+                        <span>Mi red</span>
+                    </a>
+                    <a href="#" class="nav-item-prolink" onclick="showSection('mensajes')">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>Mensajes</span>
+                    </a>
+                    <a href="#" class="nav-item-prolink" onclick="showSection('yo')">
+                        <i class="fas fa-user"></i>
+                        <span>Yo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-prolink">
+        <div class="row-prolink">
+            <!-- Left Sidebar -->
+            <aside>
+                <div class="card profile-card p-0">
+                    <div class="profile-cover"></div>
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="p-3">
+                        <div class="profile-name" id="sidebarUserName">Usuario Demo</div>
+                        <div class="profile-title" id="sidebarUserTitle">Desarrollador Full Stack</div>
+                    </div>
+                    <div class="profile-stats px-3 pb-3">
+                        <div class="stat-item">
+                            <span>Conexiones</span>
+                            <span class="stat-number" id="connectionsCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Impresiones del perfil</span>
+                            <span class="stat-number">125</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Feed -->
+            <main>
+                <!-- Inicio Section -->
+                <div id="section-inicio">
+                    <!-- Post Composer -->
+                    <div class="card post-composer">
+                        <div class="composer-input">
+                            <div class="composer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <textarea class="composer-textarea" id="postContent" placeholder="¿En qué estás pensando?"></textarea>
+                        </div>
+                        <div class="composer-actions">
+                            <div class="media-actions">
+                                <button class="media-btn">
+                                    <i class="fas fa-photo-video text-success"></i>
+                                    <span>Foto</span>
+                                </button>
+                                <button class="media-btn">
+                                    <i class="fas fa-calendar-alt text-warning"></i>
+                                    <span>Evento</span>
+                                </button>
+                                <button class="media-btn">
+                                    <i class="fas fa-newspaper text-danger"></i>
+                                    <span>Artículo</span>
+                                </button>
+                            </div>
+                            <button class="btn-post" id="publishBtn" onclick="createPost()" disabled>Publicar</button>
+                        </div>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div id="postsContainer">
+                        <!-- Posts will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Red Section -->
+                <div id="section-red" class="d-none">
+                    <div class="card p-3">
+                        <h5>Mi Red</h5>
+                        <div id="connectionsContainer">
+                            <!-- Connections will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensajes Section -->
+                <div id="section-mensajes" class="d-none">
+                    <div class="card p-3">
+                        <h5>Mensajes</h5>
+                        <div id="messagesContainer">
+                            <!-- Messages will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yo Section -->
+                <div id="section-yo" class="d-none">
+                    <div class="card p-3">
+                        <h5>Mi Perfil</h5>
+                        <button class="btn-primary" onclick="showEditProfileModal()">Editar perfil</button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside>
+                <div class="card p-3 suggestions-card">
+                    <h6>Personas que podrías conocer</h6>
+                    <div id="suggestionsContainer">
+                        <!-- Suggestions will be loaded here -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <h3 class="text-center mb-4" id="authTitle">Iniciar Sesión</h3>
+            
+            <form id="authForm">
+                <div id="registerFields" class="d-none">
+                    <div class="form-group">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                
+                <button type="submit" class="btn-primary mb-3" id="authSubmitBtn">
+                    Iniciar Sesión
+                </button>
+            </form>
+            
+            <div class="text-center">
+                <span id="authSwitchText">¿No tienes cuenta?</span>
+                <a href="#" id="authSwitch" onclick="toggleAuthMode()">Regístrate aquí</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'http://localhost:8080/api/v1';
+        let currentUser = null;
+        let authToken = null;
+        let isLoginMode = true;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for stored authentication
+            const storedToken = localStorage.getItem('prolink_token');
+            const storedUser = localStorage.getItem('prolink_user');
+            
+            if (storedToken && storedUser) {
+                authToken = storedToken;
+                currentUser = JSON.parse(storedUser);
+                updateUIForLoggedInUser();
+                loadInitialData();
+            } else {
+                showAuthModal();
+            }
+
+            // Enable post button when content is typed
+            document.getElementById('postContent').addEventListener('input', function() {
+                const publishBtn = document.getElementById('publishBtn');
+                publishBtn.disabled = this.value.trim() === '';
+            });
+        });
+
+        // Authentication functions
+        function showAuthModal() {
+            document.getElementById('authModal').classList.add('active');
+        }
+
+        function hideAuthModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            const title = document.getElementById('authTitle');
+            const submitBtn = document.getElementById('authSubmitBtn');
+            const switchText = document.getElementById('authSwitchText');
+            const switchLink = document.getElementById('authSwitch');
+            const registerFields = document.getElementById('registerFields');
+
+            if (isLoginMode) {
+                title.textContent = 'Iniciar Sesión';
+                submitBtn.textContent = 'Iniciar Sesión';
+                switchText.textContent = '¿No tienes cuenta?';
+                switchLink.textContent = 'Regístrate aquí';
+                registerFields.classList.add('d-none');
+            } else {
+                title.textContent = 'Crear Cuenta';
+                submitBtn.textContent = 'Crear Cuenta';
+                switchText.textContent = '¿Ya tienes cuenta?';
+                switchLink.textContent = 'Inicia sesión aquí';
+                registerFields.classList.remove('d-none');
+            }
+        }
+
+        // Handle authentication form submission
+        document.getElementById('authForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                let response;
+                if (isLoginMode) {
+                    response = await fetch(`${API_BASE_URL}/auth/login`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email, password })
+                    });
+                } else {
+                    const firstName = document.getElementById('firstName').value;
+                    const lastName = document.getElementById('lastName').value;
+                    
+                    response = await fetch(`${API_BASE_URL}/auth/register`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            firstName,
+                            lastName,
+                            email,
+                            password,
+                            username: email
+                        })
+                    });
+                }
+
+                if (response.ok) {
+                    const data = await response.json();
+                    authToken = data.token;
+                    currentUser = data.user;
+                    
+                    // Store authentication data
+                    localStorage.setItem('prolink_token', authToken);
+                    localStorage.setItem('prolink_user', JSON.stringify(currentUser));
+                    
+                    hideAuthModal();
+                    updateUIForLoggedInUser();
+                    loadInitialData();
+                } else {
+                    const error = await response.text();
+                    alert('Error: ' + error);
+                }
+            } catch (error) {
+                console.error('Authentication error:', error);
+                alert('Error de conexión. Por favor intenta de nuevo.');
+            }
+        });
+
+        // Update UI for logged in user
+        function updateUIForLoggedInUser() {
+            if (currentUser) {
+                const sidebarName = document.getElementById('sidebarUserName');
+                const sidebarTitle = document.getElementById('sidebarUserTitle');
+                
+                sidebarName.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+                sidebarTitle.textContent = currentUser.professionalTitle || 'Usuario de ProLink';
+            }
+        }
+
+        // Load initial data
+        async function loadInitialData() {
+            await loadPosts();
+            await loadConnections();
+            await loadSuggestions();
+        }
+
+        // Navigation functions
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = ['inicio', 'red', 'mensajes', 'yo'];
+            sections.forEach(section => {
+                document.getElementById(`section-${section}`).classList.add('d-none');
+            });
+
+            // Show selected section
+            document.getElementById(`section-${sectionName}`).classList.remove('d-none');
+
+            // Update navigation active state
+            document.querySelectorAll('.nav-item-prolink').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Post functions
+        async function createPost() {
+            const content = document.getElementById('postContent').value.trim();
+            if (!content) return;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/posts`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({
+                        content: content,
+                        type: 'TEXT',
+                        privacy: 'PUBLIC'
+                    })
+                });
+
+                if (response.ok) {
+                    document.getElementById('postContent').value = '';
+                    document.getElementById('publishBtn').disabled = true;
+                    await loadPosts();
+                } else {
+                    alert('Error al crear el post');
+                }
+            } catch (error) {
+                console.error('Error creating post:', error);
+                alert('Error de conexión');
+            }
+        }
+
+        async function loadPosts() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/posts/feed`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    const posts = await response.json();
+                    displayPosts(posts);
+                }
+            } catch (error) {
+                console.error('Error loading posts:', error);
+            }
+        }
+
+        function displayPosts(posts) {
+            const container = document.getElementById('postsContainer');
+            container.innerHTML = '';
+
+            posts.forEach(post => {
+                const postElement = createPostElement(post);
+                container.appendChild(postElement);
+            });
+        }
+
+        function createPostElement(post) {
+            const div = document.createElement('div');
+            div.className = 'card post-card p-3';
+            
+            div.innerHTML = `
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="post-author">
+                        <div class="author-name">${post.author?.firstName} ${post.author?.lastName}</div>
+                        <div class="author-title">${post.author?.professionalTitle || 'Usuario de ProLink'}</div>
+                        <div class="post-time">${formatDate(post.createdAt)}</div>
+                    </div>
+                    <button class="post-menu">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+                <div class="post-content">
+                    ${post.content}
+                </div>
+                <div class="post-actions">
+                    <button class="action-btn" onclick="toggleLike(${post.id})">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>Me gusta</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-comment"></i>
+                        <span>Comentar</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-share"></i>
+                        <span>Compartir</span>
+                    </button>
+                </div>
+            `;
+
+            return div;
+        }
+
+        async function toggleLike(postId) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/posts/${postId}/like`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    await loadPosts();
+                }
+            } catch (error) {
+                console.error('Error toggling like:', error);
+            }
+        }
+
+        // Connection functions
+        async function loadConnections() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/connections/my-connections`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    const connections = await response.json();
+                    document.getElementById('connectionsCount').textContent = connections.length;
+                }
+            } catch (error) {
+                console.error('Error loading connections:', error);
+            }
+        }
+
+        async function loadSuggestions() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/connections/suggestions`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                if (response.ok) {
+                    const suggestions = await response.json();
+                    displaySuggestions(suggestions);
+                }
+            } catch (error) {
+                console.error('Error loading suggestions:', error);
+            }
+        }
+
+        function displaySuggestions(suggestions) {
+            const container = document.getElementById('suggestionsContainer');
+            container.innerHTML = '';
+
+            suggestions.slice(0, 3).forEach(user => {
+                const div = document.createElement('div');
+                div.className = 'suggestion-item';
+                
+                div.innerHTML = `
+                    <div class="suggestion-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="suggestion-info">
+                        <div class="suggestion-name">${user.firstName} ${user.lastName}</div>
+                        <div class="suggestion-title">${user.professionalTitle || 'Usuario de ProLink'}</div>
+                    </div>
+                    <button class="btn-connect" onclick="sendConnectionRequest(${user.id})">
+                        Conectar
+                    </button>
+                `;
+
+                container.appendChild(div);
+            });
+        }
+
+        async function sendConnectionRequest(userId) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/connections/request`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({
+                        addresseeId: userId,
+                        message: '¡Hola! Me gustaría conectar contigo en ProLink.'
+                    })
+                });
+
+                if (response.ok) {
+                    await loadSuggestions();
+                    alert('Solicitud de conexión enviada');
+                } else {
+                    alert('Error al enviar solicitud');
+                }
+            } catch (error) {
+                console.error('Error sending connection request:', error);
+            }
+        }
+
+        // Profile functions
+        function showEditProfileModal() {
+            alert('Función de perfil próximamente');
+        }
+
+        // Utility functions
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffTime = Math.abs(now - date);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 1) {
+                return 'Hace 1 día';
+            } else if (diffDays < 7) {
+                return `Hace ${diffDays} días`;
+            } else {
+                return date.toLocaleDateString('es-ES');
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            // Simple toast notification
+            alert(message);
+        }
+    </script>
+</body>
+</html>
